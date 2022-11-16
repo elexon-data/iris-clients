@@ -1,0 +1,16 @@
+{
+  "name": "iris-js-client",
+  "description": "Node.js client for the Insights Real-time Information Service (IRIS)",
+  "author": "Softwire",
+  "private": true,
+  "dependencies": {
+    "@azure/identity": "^2.0.5",
+    "@azure/service-bus": "^7.5.1",
+    "dotenv": "^16.0.1"
+  },
+  "type": "module",
+  "scripts": {
+    "client": "node --require dotenv/config client.js",
+    "client:console": "npm run client -- --console-only"
+  }
+}
