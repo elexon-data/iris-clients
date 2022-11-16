@@ -1,0 +1,10 @@
+{
+  "ServiceBusNamespace": "elexon-iris",
+  "ServiceBusQueue": "",
+  "RelativeFileDownloadDirectory": "",
+
+  "AppRegistration": {
+    "ClientId": "",
+    "Secret": ""
+  }
+}
