@@ -12,9 +12,6 @@ if (isEmptyOrSpaces(downloadDirectory)) {
   throw new Error("Invalid configuration value: RELATIVE_FILE_DOWNLOAD_DIRECTORY is required");
 }
 
-const args = process.argv.slice(2);
-const consoleOnly = args.includes("--console-only");
-
 const createFile = (dataset, content) => {
   const now = new Date();
   const fileName = `${dataset}_${formatDateForFileName(now)}.json`;
@@ -48,12 +45,7 @@ const processMessage = async (messageReceived) => {
   }
 
   const content = JSON.stringify(body, null, 2);
-
-  if (consoleOnly) {
-    console.log("Message body:", content);
-  } else {
-    createFile(dataset, content);
-  }
+  createFile(dataset, content);
 };
 
 export { processMessage };
