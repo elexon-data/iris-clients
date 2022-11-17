@@ -11,7 +11,6 @@ class Settings:
     ServiceBusNamespace: str
     FullyQualifiedNamespace: str = field(init=False)
     ServiceBusQueue:str
-    ConnectionString: str
     
     RelativeFileDownloadDirectory: str
     AppRegistration: SettingsAppRegistration

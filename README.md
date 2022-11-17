@@ -40,7 +40,8 @@ python -m venv .venv
 ./.venv/Scripts/activate
 pip install -r requirements.txt
 ```
-4. Enter your client credentials into the `settings.json` file
+4. Copy the `settings.template.json` file and rename it to `settings.json`
+5. Enter your client credentials into the `settings.json` file
 
 ```json
 {
@@ -54,7 +55,7 @@ pip install -r requirements.txt
   }
 }
 ```
-5. Run `python client.py`
+6. Run `python client.py`
 
 </details>
 
