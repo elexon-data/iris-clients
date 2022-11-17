@@ -2,7 +2,15 @@ import { mkdir, writeFile, stat } from "fs";
 import { formatDateForFileName } from "../helpers/dateHelpers.js";
 import path from "path";
 
-const DATA_DIRECTORY = "data";
+function isEmptyOrSpaces(string){
+  return string === null || string.match(/^\s*$/) !== null;
+}
+
+const downloadDirectory = process.env.RELATIVE_FILE_DOWNLOAD_DIRECTORY
+
+if (isEmptyOrSpaces(downloadDirectory)) {
+  throw new Error("Invalid configuration value: RELATIVE_FILE_DOWNLOAD_DIRECTORY is required");
+}
 
 const args = process.argv.slice(2);
 const consoleOnly = args.includes("--console-only");
@@ -10,7 +18,7 @@ const consoleOnly = args.includes("--console-only");
 const createFile = (dataset, content) => {
   const now = new Date();
   const fileName = `${dataset}_${formatDateForFileName(now)}.json`;
-  const directory = path.join(DATA_DIRECTORY, dataset);
+  const directory = path.join(downloadDirectory, dataset);
   const filePath = path.join(directory, fileName);
 
   stat(directory, (err) => {

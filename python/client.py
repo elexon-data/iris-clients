@@ -1,6 +1,7 @@
 from asyncio.log import logger
 from datetime import datetime
 import os
+import sys
 import json
 import logging
 import ast
@@ -47,13 +48,15 @@ def save_message(msg: ServiceBusReceivedMessage, download_directory):
         json.dump(raw_json, f)
 
 def get_download_directory(settings: Settings):
-    return settings.RelativeFileDownloadDirectory or 'data'
-
+    if settings.RelativeFileDownloadDirectory and (not settings.RelativeFileDownloadDirectory.isspace()):
+        return settings.RelativeFileDownloadDirectory
+    else:
+        sys.exit('Invalid configuration value: RelativeFileDownloadDirectory is required')
 
 def run():
     settings = read_settings()
-    client = get_authenticated_sevice_bus_client(settings)
     download_directory = get_download_directory(settings)
+    client = get_authenticated_sevice_bus_client(settings)
     if not os.path.exists(download_directory):
         os.mkdir(download_directory)
 

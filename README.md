@@ -47,7 +47,7 @@ pip install -r requirements.txt
 {
   "ServiceBusNamespace": "elexon-iris",
   "ServiceBusQueue": "{your queue name}",
-  "RelativeFileDownloadDirectory": "",
+  "RelativeFileDownloadDirectory": "data",
 
   "AppRegistration": {
     "ClientId": "",
@@ -69,7 +69,8 @@ pip install -r requirements.txt
 5. Enter your client credentials into the `.env` file
 ```
 SERVICE_BUS_NAMESPACE=elexon-iris
-SERVICE_BUS_QUEUE=
+SERVICE_BUS_QUEUE={your queue name}
+RELATIVE_FILE_DOWNLOAD_DIRECTORY=data
 APP_REGISTRATION_CLIENT_ID=
 APP_REGISTRATION_SECRET=
 ```
@@ -87,8 +88,8 @@ APP_REGISTRATION_SECRET=
 ```json
 {
   "ServiceBusNamespace": "elexon-iris",
-  "ServiceBusQueue": "",
-  "RelativeFileDownloadDirectory": "",
+  "ServiceBusQueue": "{your queue name}",
+  "RelativeFileDownloadDirectory": "data",
 
   "AppRegistration": {
     "ClientId": "",
