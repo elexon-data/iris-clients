@@ -9,7 +9,7 @@ IRIS is based on the [Advanced Message Queuing Protocol (AMQP)](https://en.wikip
 This repo contains a collection of example clients along with notes on how to write you own client.
 
 
-Currently we have clients written in **Python**, **Node.js** and **C#/.NET**. We also include a GUI client that you might find useful for testing purposes but is not intended for production use.
+Currently we have clients written in **Python**, **Node.js** and **C#/.NET**.
 
 
 
@@ -40,13 +40,14 @@ python -m venv .venv
 ./.venv/Scripts/activate
 pip install -r requirements.txt
 ```
-4. Enter your client credentials into the `settings.json` file
+4. Copy the `settings.template.json` file and rename it to `settings.json`
+5. Enter your client credentials into the `settings.json` file
 
 ```json
 {
   "ServiceBusNamespace": "elexon-iris",
-  "ServiceBusQueue": "{your queue name}",
-  "RelativeFileDownloadDirectory": "",
+  "ServiceBusQueue": "",
+  "RelativeFileDownloadDirectory": "./data",
 
   "AppRegistration": {
     "ClientId": "",
@@ -54,7 +55,10 @@ pip install -r requirements.txt
   }
 }
 ```
-5. Run `python client.py`
+6. Run `python client.py`
+
+N.B. If you leave `ClientId` and `Secret` blank when running the client, it will open a browser window with a login page.
+This may be useful during initial setup and testing but is not recommended for production use. 
 
 </details>
 
@@ -69,17 +73,22 @@ pip install -r requirements.txt
 ```
 SERVICE_BUS_NAMESPACE=elexon-iris
 SERVICE_BUS_QUEUE=
+RELATIVE_FILE_DOWNLOAD_DIRECTORY=./data
 APP_REGISTRATION_CLIENT_ID=
 APP_REGISTRATION_SECRET=
 ```
 6. Run `npm run client`
+
+N.B. If you leave `APP_REGISTRATION_CLIENT_ID` and `APP_REGISTRATION_SECRET` blank when running the client, it will open a browser window with a login page.
+This may be useful during initial setup and testing but is not recommended for production use.
+
 </details>
 
 <details>
     <summary ><h3>C#/.NET</h3></summary>
 
 1. Ensure you have installed [.NET 6](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks?cid=getdotnetsdk)
-2. Run `cd dotnet` to navigate to the `dotnet` directory
+2. Run `cd dotnet/IrisClient` to navigate to the `dotnet/IrisClient` directory
 3. Copy the `appsettings.template.json` file and rename it to `appsettings.json`
 4. Enter your client credentials into the `appsettings.json` file
 
@@ -87,7 +96,7 @@ APP_REGISTRATION_SECRET=
 {
   "ServiceBusNamespace": "elexon-iris",
   "ServiceBusQueue": "",
-  "RelativeFileDownloadDirectory": "",
+  "RelativeFileDownloadDirectory": "./data",
 
   "AppRegistration": {
     "ClientId": "",
@@ -98,6 +107,9 @@ APP_REGISTRATION_SECRET=
 5. Run `dotnet build` to build the project
 6. Run `dotnet run`
 
+N.B. If you leave `ClientId` and `Secret` blank when running the client, it will open a browser window with a login page.
+This may be useful during initial setup and testing but is not recommended for production use.
+
 </details>
 
 ## Important notes
@@ -105,7 +117,7 @@ APP_REGISTRATION_SECRET=
 ### Time-to-live (TTL) = 3 days
 Messages are stored in robust server-side queues, so it's not a problem if your connection is broken for a short while, but please note **messages have a time-to-live value of 3 days**. If you do not connect to IRIS for 3 days or more, some messages may have expired and no longer be available. In this case, it is possible to fill any data gaps using the APIs, given that they share the same output format.
 
-### Recieving messages
+### Receiving messages
 **When you receive a message it will be removed from the queue and won't be available again via IRIS**. If you need to recover any data, you can use the API instead.
 
 ### Handling messages
@@ -141,3 +153,5 @@ We suggest looking at the example clients to get an understanding of how a clien
 
 ## Feedback
 We're continuously making more data available through IRIS and further reducing latency. Help us improve the service by sharing your feedback to insightssupport@elexon.co.uk.
+
+We also welcome contributions and suggestions directly to this repository. Please see our [contributing guidelines](./CONTRIBUTING.md) for more information.

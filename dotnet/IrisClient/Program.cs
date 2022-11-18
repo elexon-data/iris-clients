@@ -15,13 +15,9 @@ var client = ServiceBusClientHelpers.GetAuthenticatedServiceBusClient(settings);
 var processor = client.CreateProcessor(settings.ServiceBusQueue);
 Console.WriteLine("Connection created with processor");
 
-
 try
 {
-    var relativeDownloadDirectory = string.IsNullOrWhiteSpace(settings.RelativeFileDownloadDirectory)
-        ? "data"
-        : settings.RelativeFileDownloadDirectory;
-    var handlers = new MessageProcessors(relativeDownloadDirectory);
+    var handlers = new MessageProcessors(settings.RelativeFileDownloadDirectory!);
     processor.ProcessMessageAsync += handlers.DownloadHandler;
     processor.ProcessErrorAsync += MessageProcessors.ErrorHandler;
     await processor.StartProcessingAsync();

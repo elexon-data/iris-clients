@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IrisClient", ".\IrisClient\IrisClient.csproj", "{910E2ED4-67B6-4915-BA77-162AC25C7914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrisGuiClient", ".\IrisGuiClient\IrisGuiClient.csproj", "{F637837D-6EE2-47AA-9438-DABD9C026663}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -38,9 +38,9 @@ public sealed class Settings
             throw new SystemException($"Invalid configuration value: {nameof(ServiceBusNamespace)} is required");
         }
 
-        if (string.IsNullOrWhiteSpace(ServiceBusQueue))
+        if (string.IsNullOrWhiteSpace(RelativeFileDownloadDirectory))
         {
-            throw new SystemException($"Invalid configuration value: {nameof(ServiceBusQueue)} is required");
+            throw new SystemException($"Invalid configuration value: {nameof(RelativeFileDownloadDirectory)} is required");
         }
 
         if (AppRegistration != null)
@@ -49,9 +49,9 @@ public sealed class Settings
                 string.IsNullOrWhiteSpace(AppRegistration.Secret))
             {
                 throw new SystemException(
-                    $"Invalid configuration value(s): If {nameof(AppRegistration)} is provided, " +
+                    $"Invalid configuration value(s): If {nameof(AppRegistration)} details are provided, " +
                     $"{nameof(AppRegistration.ClientId)} and " +
-                    $"{nameof(AppRegistration.Secret)} are both required.");
+                    $"{nameof(AppRegistration.Secret)} are both required");
             }
         }
     }

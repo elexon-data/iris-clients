@@ -1,16 +1,12 @@
 import { mkdir, writeFile, stat } from "fs";
 import { formatDateForFileName } from "../helpers/dateHelpers.js";
 import path from "path";
-
-const DATA_DIRECTORY = "data";
-
-const args = process.argv.slice(2);
-const consoleOnly = args.includes("--console-only");
+import config from "../config.js";
 
 const createFile = (dataset, content) => {
   const now = new Date();
   const fileName = `${dataset}_${formatDateForFileName(now)}.json`;
-  const directory = path.join(DATA_DIRECTORY, dataset);
+  const directory = path.join(config.downloadDirectory, dataset);
   const filePath = path.join(directory, fileName);
 
   stat(directory, (err) => {
@@ -40,12 +36,7 @@ const processMessage = async (messageReceived) => {
   }
 
   const content = JSON.stringify(body, null, 2);
-
-  if (consoleOnly) {
-    console.log("Message body:", content);
-  } else {
-    createFile(dataset, content);
-  }
+  createFile(dataset, content);
 };
 
 export { processMessage };
