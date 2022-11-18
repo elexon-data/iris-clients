@@ -18,9 +18,11 @@ class Settings:
 
     def __post_init__(self):
         self.FullyQualifiedNamespace = f"{self.ServiceBusNamespace}.servicebus.windows.net";
-        if not self.ServiceBusNamespace or self.ServiceBusNamespace.isspace():
+        if not self.ServiceBusNamespace:
             sys.exit('Invalid configuration value: ServiceBusNamespace is required')
-        if not self.ServiceBusQueue or self.ServiceBusQueue.isspace():
+        if not self.ServiceBusQueue:
             sys.exit('Invalid configuration value: ServiceBusQueue is required')
-        if not self.RelativeFileDownloadDirectory or self.RelativeFileDownloadDirectory.isspace():
+        if not self.RelativeFileDownloadDirectory:
             sys.exit('Invalid configuration value: RelativeFileDownloadDirectory is required')
+        if (bool(self.AppRegistration.ClientId) is not bool(self.AppRegistration.Secret)):
+            sys.exit('Invalid configuration value(s): If AppRegistration details are provided, ClientId and Secret are both required')

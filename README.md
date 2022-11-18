@@ -46,16 +46,19 @@ pip install -r requirements.txt
 ```json
 {
   "ServiceBusNamespace": "elexon-iris",
-  "ServiceBusQueue": "your queue name",
+  "ServiceBusQueue": "",
   "RelativeFileDownloadDirectory": "./data",
 
   "AppRegistration": {
-    "ClientId": "your client ID",
-    "Secret": "your client secret"
+    "ClientId": "",
+    "Secret": ""
   }
 }
 ```
 6. Run `python client.py`
+
+N.B. If you leave `ClientId` and `Secret` blank when running the client, it will open a browser window with a login page.
+This may be useful during initial setup and testing but is not recommended for production use. 
 
 </details>
 
@@ -69,12 +72,16 @@ pip install -r requirements.txt
 5. Enter your client credentials into the `.env` file
 ```
 SERVICE_BUS_NAMESPACE=elexon-iris
-SERVICE_BUS_QUEUE=your queue name
+SERVICE_BUS_QUEUE=
 RELATIVE_FILE_DOWNLOAD_DIRECTORY=./data
-APP_REGISTRATION_CLIENT_ID=your client ID
-APP_REGISTRATION_SECRET=your client secret
+APP_REGISTRATION_CLIENT_ID=
+APP_REGISTRATION_SECRET=
 ```
 6. Run `npm run client`
+
+N.B. If you leave `APP_REGISTRATION_CLIENT_ID` and `APP_REGISTRATION_SECRET` blank when running the client, it will open a browser window with a login page.
+This may be useful during initial setup and testing but is not recommended for production use.
+
 </details>
 
 <details>
@@ -88,17 +95,20 @@ APP_REGISTRATION_SECRET=your client secret
 ```json
 {
   "ServiceBusNamespace": "elexon-iris",
-  "ServiceBusQueue": "your queue name",
+  "ServiceBusQueue": "",
   "RelativeFileDownloadDirectory": "./data",
 
   "AppRegistration": {
-    "ClientId": "your client ID",
-    "Secret": "your client secret"
+    "ClientId": "",
+    "Secret": ""
   }
 }
 ```
 5. Run `dotnet build` to build the project
 6. Run `dotnet run`
+
+N.B. If you leave `ClientId` and `Secret` blank when running the client, it will open a browser window with a login page.
+This may be useful during initial setup and testing but is not recommended for production use.
 
 </details>
 

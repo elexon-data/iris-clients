@@ -49,9 +49,9 @@ public sealed class Settings
                 string.IsNullOrWhiteSpace(AppRegistration.Secret))
             {
                 throw new SystemException(
-                    $"Invalid configuration value(s): If {nameof(AppRegistration)} is provided, " +
+                    $"Invalid configuration value(s): If {nameof(AppRegistration)} details are provided, " +
                     $"{nameof(AppRegistration.ClientId)} and " +
-                    $"{nameof(AppRegistration.Secret)} are both required.");
+                    $"{nameof(AppRegistration.Secret)} are both required");
             }
         }
     }
