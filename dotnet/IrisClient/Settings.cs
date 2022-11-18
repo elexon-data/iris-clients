@@ -38,11 +38,6 @@ public sealed class Settings
             throw new SystemException($"Invalid configuration value: {nameof(ServiceBusNamespace)} is required");
         }
 
-        if (string.IsNullOrWhiteSpace(ServiceBusQueue))
-        {
-            throw new SystemException($"Invalid configuration value: {nameof(ServiceBusQueue)} is required");
-        }
-        
         if (string.IsNullOrWhiteSpace(RelativeFileDownloadDirectory))
         {
             throw new SystemException($"Invalid configuration value: {nameof(RelativeFileDownloadDirectory)} is required");

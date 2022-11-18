@@ -48,10 +48,7 @@ def save_message(msg: ServiceBusReceivedMessage, download_directory):
         json.dump(raw_json, f)
 
 def get_download_directory(settings: Settings):
-    if settings.RelativeFileDownloadDirectory and (not settings.RelativeFileDownloadDirectory.isspace()):
-        return settings.RelativeFileDownloadDirectory
-    else:
-        sys.exit('Invalid configuration value: RelativeFileDownloadDirectory is required')
+    return settings.RelativeFileDownloadDirectory
 
 def run():
     settings = read_settings()

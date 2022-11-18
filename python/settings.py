@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+import sys
 
 @dataclass
 class SettingsAppRegistration:
@@ -17,3 +18,9 @@ class Settings:
 
     def __post_init__(self):
         self.FullyQualifiedNamespace = f"{self.ServiceBusNamespace}.servicebus.windows.net";
+        if not self.ServiceBusNamespace or self.ServiceBusNamespace.isspace():
+            sys.exit('Invalid configuration value: ServiceBusNamespace is required')
+        if not self.ServiceBusQueue or self.ServiceBusQueue.isspace():
+            sys.exit('Invalid configuration value: ServiceBusQueue is required')
+        if not self.RelativeFileDownloadDirectory or self.RelativeFileDownloadDirectory.isspace():
+            sys.exit('Invalid configuration value: RelativeFileDownloadDirectory is required')
