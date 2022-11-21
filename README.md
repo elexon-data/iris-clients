@@ -87,7 +87,7 @@ This may be useful during initial setup and testing but is not recommended for p
 <details>
     <summary ><h3>C#/.NET</h3></summary>
 
-1. Ensure you have installed [.NET 6](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks?cid=getdotnetsdk)
+1. Ensure you have installed the [.NET SDK](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks?cid=getdotnetsdk) (version 6 or above)
 2. Run `cd dotnet/IrisClient` to navigate to the `dotnet/IrisClient` directory
 3. Copy the `appsettings.template.json` file and rename it to `appsettings.json`
 4. Enter your client credentials into the `appsettings.json` file
