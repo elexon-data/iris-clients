@@ -1,10 +1,7 @@
 {
+  "ClientId": "",
+  "QueueName": "",
   "ServiceBusNamespace": "elexon-iris",
-  "ServiceBusQueue": "",
-  "RelativeFileDownloadDirectory": "./data",
-
-  "AppRegistration": {
-    "ClientId": "",
-    "Secret": ""
-  }
+  "Secret": "",
+  "RelativeFileDownloadDirectory": "./data"
 }

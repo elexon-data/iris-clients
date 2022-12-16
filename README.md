@@ -45,14 +45,11 @@ pip install -r requirements.txt
 
 ```json
 {
+  "ClientId": "",
+  "QueueName": "",
   "ServiceBusNamespace": "elexon-iris",
-  "ServiceBusQueue": "",
-  "RelativeFileDownloadDirectory": "./data",
-
-  "AppRegistration": {
-    "ClientId": "",
-    "Secret": ""
-  }
+  "Secret": "",
+  "RelativeFileDownloadDirectory": "./data"
 }
 ```
 6. Run `python client.py`
