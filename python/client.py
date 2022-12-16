@@ -18,11 +18,11 @@ def read_settings() -> Settings:
     return settings
 
 def get_authenticated_sevice_bus_client(settings: Settings):    
-    if settings.AppRegistration.ClientId and settings.AppRegistration.Secret:
+    if settings.ClientId and settings.Secret:
         token_credential = ClientSecretCredential(
             settings.TenantId,
-            settings.AppRegistration.ClientId,
-            settings.AppRegistration.Secret
+            settings.ClientId,
+            settings.Secret
         )
         logging.info('Connecting using app registration')
         return ServiceBusClient(settings.FullyQualifiedNamespace, token_credential)
@@ -57,7 +57,7 @@ def run():
     if not os.path.exists(download_directory):
         os.mkdir(download_directory)
 
-    receiver = client.get_queue_receiver(settings.ServiceBusQueue)
+    receiver = client.get_queue_receiver(settings.QueueName)
     logging.info('Connection created with processor')
 
     with receiver:
