@@ -94,14 +94,11 @@ This may be useful during initial setup and testing but is not recommended for p
 
 ```json
 {
+  "ClientId": "",
+  "QueueName": "",
   "ServiceBusNamespace": "elexon-iris",
-  "ServiceBusQueue": "",
-  "RelativeFileDownloadDirectory": "./data",
-
-  "AppRegistration": {
-    "ClientId": "",
-    "Secret": ""
-  }
+  "Secret": "",
+  "RelativeFileDownloadDirectory": "./data"
 }
 ```
 5. Run `dotnet build` to build the project

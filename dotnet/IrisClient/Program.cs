@@ -12,7 +12,7 @@ settings.Validate();
 
 var client = ServiceBusClientHelpers.GetAuthenticatedServiceBusClient(settings);
 
-var processor = client.CreateProcessor(settings.ServiceBusQueue);
+var processor = client.CreateProcessor(settings.QueueName);
 Console.WriteLine("Connection created with processor");
 
 try
