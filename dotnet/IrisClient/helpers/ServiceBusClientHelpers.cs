@@ -12,8 +12,8 @@ public static class ServiceBusClientHelpers
         {
             var tokenCredential = new ClientSecretCredential(
                 settings.TenantId,
-                settings.AppRegistration!.ClientId,
-                settings.AppRegistration.Secret);
+                settings.ClientId,
+                settings.Secret);
             Console.WriteLine("Connecting using app registration");
             return new ServiceBusClient(settings.FullyQualifiedNamespace, tokenCredential);
         }

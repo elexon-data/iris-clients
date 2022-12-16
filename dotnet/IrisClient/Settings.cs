@@ -1,36 +1,26 @@
 namespace IrisClient;
 
-public sealed class AppRegistration
-{
-    public string? ClientId { get; set; }
-    public string? Secret { get; set; }
-}
-
 public sealed class Settings
 {
     public string TenantId = "1a235385-5d29-40e1-96fd-bc5ec2706361"; // Elexon Tenant Id
     public string? ServiceBusNamespace { get; set; }
+    public string? ClientId { get; set; }
+    public string? Secret { get; set; }
     public string FullyQualifiedNamespace => $"{ServiceBusNamespace}.servicebus.windows.net";
-    public string? ServiceBusQueue { get; set; }
+    public string? QueueName { get; set; }
     public string? RelativeFileDownloadDirectory { get; set; }
-    public AppRegistration? AppRegistration { get; set; }
 
     public bool IsAppRegistrationProvided()
     {
-        if (AppRegistration == null)
-        {
-            return false;
-        }
-
-        return !string.IsNullOrWhiteSpace(AppRegistration.ClientId) &&
-               !string.IsNullOrWhiteSpace(AppRegistration.Secret);
+        return !string.IsNullOrWhiteSpace(ClientId) &&
+               !string.IsNullOrWhiteSpace(Secret);
     }
 
     public void Validate()
     {
-        if (string.IsNullOrWhiteSpace(ServiceBusQueue))
+        if (string.IsNullOrWhiteSpace(QueueName))
         {
-            throw new SystemException($"Invalid configuration value: {nameof(ServiceBusQueue)} is required");
+            throw new SystemException($"Invalid configuration value: {nameof(QueueName)} is required");
         }
 
         if (string.IsNullOrWhiteSpace(ServiceBusNamespace))
@@ -43,16 +33,13 @@ public sealed class Settings
             throw new SystemException($"Invalid configuration value: {nameof(RelativeFileDownloadDirectory)} is required");
         }
 
-        if (AppRegistration != null)
+        if (string.IsNullOrWhiteSpace(ClientId) !=
+            string.IsNullOrWhiteSpace(Secret))
         {
-            if (string.IsNullOrWhiteSpace(AppRegistration.ClientId) !=
-                string.IsNullOrWhiteSpace(AppRegistration.Secret))
-            {
-                throw new SystemException(
-                    $"Invalid configuration value(s): If {nameof(AppRegistration)} details are provided, " +
-                    $"{nameof(AppRegistration.ClientId)} and " +
-                    $"{nameof(AppRegistration.Secret)} are both required");
-            }
+            throw new SystemException(
+                $"Invalid configuration value(s): If one of" +
+                $"{nameof(ClientId)} and " +
+                $"{nameof(Secret)} are provided, both are required");
         }
     }
 }
