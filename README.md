@@ -68,15 +68,15 @@ This may be useful during initial setup and testing but is not recommended for p
 4. Copy the `.env.template` file and rename it to `.env`
 5. Enter your client credentials into the `.env` file
 ```
+CLIENT_ID=
+QUEUE_NAME=
 SERVICE_BUS_NAMESPACE=elexon-iris
-SERVICE_BUS_QUEUE=
+SECRET=
 RELATIVE_FILE_DOWNLOAD_DIRECTORY=./data
-APP_REGISTRATION_CLIENT_ID=
-APP_REGISTRATION_SECRET=
 ```
 6. Run `npm run client`
 
-N.B. If you leave `APP_REGISTRATION_CLIENT_ID` and `APP_REGISTRATION_SECRET` blank when running the client, it will open a browser window with a login page.
+N.B. If you leave `CLIENT_ID` and `SECRET` blank when running the client, it will open a browser window with a login page.
 This may be useful during initial setup and testing but is not recommended for production use.
 
 </details>
