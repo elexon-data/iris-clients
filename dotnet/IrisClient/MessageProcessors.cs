@@ -27,16 +27,8 @@ public class MessageProcessors
 
         var baseDownloadDirectory = FileDownloadHelpers.GetDownloadDirectory();
 
-        string dataset;
-        try
-        {
-            dataset = node[0]?["dataset"]?.ToString() ?? "unknown";
-        }
-        catch // `node[0]` could throw ArgumentOutOfRangeException or InvalidOperationException
-        {
-            dataset = "unknown";
-        }
-
+        var dataset = args.Message.Subject ?? "unknown";
+        
         var path = Path.Combine(baseDownloadDirectory, _relativeDownloadDirectory, dataset);
         var time = DateTime.Now.ToString("yyyy-MM-ddTHH-mm-ss_fff");
         var filename = $"{dataset}_{time}.json";
