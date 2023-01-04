@@ -29,11 +29,7 @@ const processMessage = async (messageReceived) => {
   console.log("Processing message");
 
   const body = JSON.parse(messageReceived.body);
-  const dataset = body?.[0]?.dataset;
-
-  if (!dataset) {
-    throw new Error("Unable to find dataset in message");
-  }
+  const dataset = messageReceived.subject ?? "unknown";
 
   const content = JSON.stringify(body, null, 2);
   createFile(dataset, content);
