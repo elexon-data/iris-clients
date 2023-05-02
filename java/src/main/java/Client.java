@@ -38,19 +38,17 @@ public class Client {
     }
 
     private void processMessage(ServiceBusReceivedMessageContext context) {
-        try {
-            var path = getDownloadFilePath();
-            var message = context.getMessage();
-            Files.writeString(path, message.getBody().toString(), StandardOpenOption.APPEND);
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-        }
+        writeMessage(context.getMessage().getBody().toString());
     }
 
     private void processError(ServiceBusErrorContext context) {
+        writeMessage(context.getException().getMessage());
+    }
+
+    private void writeMessage(String message) {
         try {
+            System.out.println("writing message in data file");
             var path = getDownloadFilePath();
-            var message = context.getException().getMessage();
             Files.writeString(path, message, StandardOpenOption.APPEND);
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
