@@ -5,13 +5,13 @@ import java.util.Properties;
 
 public final class Settings {
 
-    private static final String SETTINGS_FILE = "settings.properties";
+    private static final String SETTINGS_FILE = "settings_template.properties";
     private static final String TENANT_ID_KEY = "TENANT_ID";
     private static final String CLIENT_ID_KEY = "CLIENT_ID";
     private static final String SECRET_KEY = "SECRET";
     private static final String QUEUE_NAME_KEY = "QUEUE_NAME";
-    private static final String SERVICE_BUS_NAMESPACE_KEY = "SERVICE_BUS_NAMESPACE";
-    private static final String DOWNLOAD_FILE_PATH_KEY = "DOWNLOAD_FILE_PATH";
+    private static final String FULLY_QUALIFIED_NAMESPACE = "FULLY_QUALIFIED_NAMESPACE";
+    private static final String DOWNLOAD_FILE_PATH_DIR = "DOWNLOAD_FILE_PATH_DIR";
 
     private static final Properties PROPERTIES;
 
@@ -43,12 +43,12 @@ public final class Settings {
         return PROPERTIES.getProperty(QUEUE_NAME_KEY);
     }
 
-    public static String getNameSpace() {
-        return PROPERTIES.getProperty(SERVICE_BUS_NAMESPACE_KEY);
+    public static String getFullyQualifiedNamespace() {
+        return PROPERTIES.getProperty(FULLY_QUALIFIED_NAMESPACE);
     }
 
-    public static String getDownloadFilePath() {
-        return PROPERTIES.getProperty(DOWNLOAD_FILE_PATH_KEY);
+    public static String getDownloadFilePathDir() {
+        return PROPERTIES.getProperty(DOWNLOAD_FILE_PATH_DIR);
     }
 
 }
