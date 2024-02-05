@@ -15,7 +15,7 @@ def read_settings() -> Settings:
         settings = from_dict(Settings, settings_dict)
     return settings
 
-def get_authenticated_sevice_bus_client(settings: Settings):    
+def get_authenticated_service_bus_client(settings: Settings):
     if settings.ClientId and settings.Secret:
         token_credential = ClientSecretCredential(
             settings.TenantId,
@@ -51,7 +51,7 @@ def get_download_directory(settings: Settings):
 def run():
     settings = read_settings()
     download_directory = get_download_directory(settings)
-    client = get_authenticated_sevice_bus_client(settings)
+    client = get_authenticated_service_bus_client(settings)
     if not os.path.exists(download_directory):
         os.mkdir(download_directory)
 
