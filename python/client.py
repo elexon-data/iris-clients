@@ -11,7 +11,6 @@ from settings import Settings
 
 
 def read_settings() -> Settings:
-    # with open("settings.json", "r") as config_file:
     settings_file = os.path.join(os.path.dirname(__file__), "settings.json")
     with open(settings_file, "r") as config_file:
         settings_dict = json.load(config_file)
