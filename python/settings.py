@@ -26,7 +26,7 @@ class Settings:
             raise ValueError(
                 "Invalid configuration value: RelativeFileDownloadDirectory is required"
             )
-        if bool(self.ClientId) is not bool(self.Secret):
+        if bool(self.ClientId) != bool(self.Secret):
             raise ValueError(
                 "Invalid configuration value(s): If one of ClientId and Secret are provided, both are required"
             )
