@@ -68,7 +68,7 @@ def run():
             try:
                 save_message(msg, download_directory)
                 receiver.complete_message(msg)
-                logging.debug(f"Successfully processed message.")
+                logging.debug("Successfully processed message.")
             except Exception as e:
                 receiver.abandon_message(msg)
                 logging.error(f"Unable to process message. Reason: {e}")
