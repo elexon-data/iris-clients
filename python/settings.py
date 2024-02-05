@@ -1,5 +1,4 @@
 from dataclasses import dataclass, field
-import sys
 
 
 @dataclass
@@ -18,14 +17,16 @@ class Settings:
             f"{self.ServiceBusNamespace}.servicebus.windows.net"
         )
         if not self.ServiceBusNamespace:
-            sys.exit("Invalid configuration value: ServiceBusNamespace is required")
+            raise ValueError(
+                "Invalid configuration value: ServiceBusNamespace is required"
+            )
         if not self.QueueName:
-            sys.exit("Invalid configuration value: QueueName is required")
+            raise ValueError("Invalid configuration value: QueueName is required")
         if not self.RelativeFileDownloadDirectory:
-            sys.exit(
+            raise ValueError(
                 "Invalid configuration value: RelativeFileDownloadDirectory is required"
             )
         if bool(self.ClientId) is not bool(self.Secret):
-            sys.exit(
+            raise ValueError(
                 "Invalid configuration value(s): If one of ClientId and Secret are provided, both are required"
             )
