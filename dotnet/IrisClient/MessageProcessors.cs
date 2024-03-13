@@ -28,10 +28,10 @@ public class MessageProcessors
         var baseDownloadDirectory = FileDownloadHelpers.GetDownloadDirectory();
 
         var dataset = args.Message.Subject ?? "unknown";
-        
+        var filename = args.Message.MessageId ?? $"{dataset}_{DateTime.Now:yyyy-MM-ddTHH-mm-ss_fff}.json";
+
         var path = Path.Combine(baseDownloadDirectory, _relativeDownloadDirectory, dataset);
-        var time = DateTime.Now.ToString("yyyy-MM-ddTHH-mm-ss_fff");
-        var filename = $"{dataset}_{time}.json";
+
         try
         {
             await FileDownloadHelpers.WriteFile(path, filename, jsonString);
