@@ -38,7 +38,7 @@ def save_message(msg: ServiceBusReceivedMessage, download_directory):
     dataset = msg.subject or 'unknown'
 
     properties = msg.application_properties or {}
-    original_file_name = properties.get(b"source_file_name", "UNKNOWN").decode("utf-8")
+    original_file_name = properties.get(b"source_file_name", b"UNKNOWN").decode("utf-8")
     if (original_file_name == "UNKNOWN"):
         file_name = f'{dataset}_{datetime.now().strftime("%y%m%dT%H%M%S_%f")}.json'
     else:
