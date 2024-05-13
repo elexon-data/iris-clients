@@ -36,7 +36,11 @@ def save_message(msg: ServiceBusReceivedMessage, download_directory):
     raw_json_s = ast.literal_eval(str(msg))
     raw_json = json.loads(raw_json_s)
     dataset = msg.subject or 'unknown'
-    file_name = f'{dataset}_{datetime.now().strftime("%y%m%dT%H%M%S_%f")}.json'
+
+    file_name = msg.message_id
+    if not file_name:
+        file_name = f'{dataset}_{datetime.now().strftime("%y%m%dT%H%M%S_%f")}.json'
+
     output_folder_path = os.path.join(download_directory, dataset)
     output_file_path = os.path.join(output_folder_path, file_name)
     
