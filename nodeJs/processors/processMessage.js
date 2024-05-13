@@ -3,9 +3,7 @@ import { formatDateForFileName } from "../helpers/dateHelpers.js";
 import path from "path";
 import config from "../config.js";
 
-const createFile = (dataset, content) => {
-  const now = new Date();
-  const fileName = `${dataset}_${formatDateForFileName(now)}.json`;
+const createFile = (dataset, fileName, content) => {
   const directory = path.join(config.downloadDirectory, dataset);
   const filePath = path.join(directory, fileName);
 
@@ -28,11 +26,14 @@ const createFile = (dataset, content) => {
 const processMessage = async (messageReceived) => {
   console.log("Processing message");
 
-  const body = JSON.parse(messageReceived.body);
+  const now = new Date();
   const dataset = messageReceived.subject ?? "unknown";
+  const fileName = messageReceived.messageId ?? `${dataset}_${formatDateForFileName(now)}.json`;
+
+  const body = JSON.parse(messageReceived.body);
 
   const content = JSON.stringify(body, null, 2);
-  createFile(dataset, content);
+  createFile(dataset, fileName, content);
 };
 
 export { processMessage };
