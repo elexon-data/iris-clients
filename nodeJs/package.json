@@ -4,7 +4,7 @@
   "author": "Softwire",
   "private": true,
   "dependencies": {
-    "@azure/identity": "^2.0.5",
+    "@azure/identity": "^4.2.1",
     "@azure/service-bus": "^7.9.0",
     "dotenv": "^16.0.1"
   },
