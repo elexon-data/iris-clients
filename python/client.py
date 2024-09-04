@@ -1,7 +1,5 @@
-from asyncio.log import logger
 from datetime import datetime
 import os
-import sys
 import json
 import logging
 import ast
@@ -11,13 +9,15 @@ from azure.identity import ClientSecretCredential, InteractiveBrowserCredential
 
 from settings import Settings
 
+
 def read_settings() -> Settings:
     with open('settings.json', 'r') as config_file:
         settings_dict = json.load(config_file)
         settings = from_dict(Settings, settings_dict)
     return settings
 
-def get_authenticated_sevice_bus_client(settings: Settings):    
+
+def get_authenticated_service_bus_client(settings: Settings):
     if settings.ClientId and settings.Secret:
         token_credential = ClientSecretCredential(
             settings.TenantId,
@@ -26,11 +26,12 @@ def get_authenticated_sevice_bus_client(settings: Settings):
         )
         logging.info('Connecting using app registration')
         return ServiceBusClient(settings.FullyQualifiedNamespace, token_credential)
-    
+
     logging.info('No connection string or app registration details found')
     logging.info('Login required to listen to queue')
     browser_credential = InteractiveBrowserCredential(tenant_id=settings.TenantId)
     return ServiceBusClient(settings.FullyQualifiedNamespace, browser_credential)
+
 
 def save_message(msg: ServiceBusReceivedMessage, download_directory):
     raw_json_s = ast.literal_eval(str(msg))
@@ -43,7 +44,7 @@ def save_message(msg: ServiceBusReceivedMessage, download_directory):
 
     output_folder_path = os.path.join(download_directory, dataset)
     output_file_path = os.path.join(output_folder_path, file_name)
-    
+
     if not os.path.exists(output_folder_path):
         os.mkdir(output_folder_path)
 
@@ -51,13 +52,15 @@ def save_message(msg: ServiceBusReceivedMessage, download_directory):
         logging.info(f"Downloading data to {output_file_path}")
         json.dump(raw_json, f)
 
+
 def get_download_directory(settings: Settings):
     return settings.RelativeFileDownloadDirectory
+
 
 def run():
     settings = read_settings()
     download_directory = get_download_directory(settings)
-    client = get_authenticated_sevice_bus_client(settings)
+    client = get_authenticated_service_bus_client(settings)
     if not os.path.exists(download_directory):
         os.mkdir(download_directory)
 
@@ -74,7 +77,7 @@ def run():
                 receiver.abandon_message(msg)
                 logging.error(f'Unable to process message. Reason: {e}')
 
+
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     run()
-    
