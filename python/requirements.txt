@@ -2,14 +2,14 @@ azure-common==1.1.28
 azure-core==1.28.0
 azure-identity==1.11.0
 azure-servicebus==7.12.1
-certifi==2022.9.24
+certifi==2023.7.22
 cffi==1.15.1
 charset-normalizer==2.1.1
-cryptography==38.0.1
+cryptography==43.0.1
 dacite==1.6.0
 idna==3.4
 isodate==0.6.1
-msal==1.19.0
+msal==1.30.0
 msal-extensions==1.0.0
 msrest==0.7.1
 oauthlib==3.2.1
