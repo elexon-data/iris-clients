@@ -29,7 +29,7 @@ You can request credentials on the [Insights Solution](https://bmrs.elexon.co.uk
 To get started with an example client, clone this repo then follow the steps below
 
 <details>
-    <summary ><h3>Python</h3></summary>
+    <summary><h3>Python</h3></summary>
 
 1. Ensure you have installed [Python](https://www.python.org/downloads/) (version 3.9 or above)
 2. Run `cd python` to navigate to the `python` directory
