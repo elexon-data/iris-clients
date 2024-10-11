@@ -15,7 +15,7 @@ If you encounter this error when attempting to migrate multi-factor authenticati
 
 3. From the options, click "Sign in to an organisation"
 4. Type "elexon.co.uk" and click "Next"
-5. In the subsequent sign-in screen, enter the email you/the user signed up with, and click "Next". Continue the sign-in process as normal
+5. In the subsequent sign-in screen, enter the email you signed up with, and click "Next". Continue the sign-in process as normal
 6. Once you have signed in, navigate to "Security info" and select "Add sign-in method"
 
 ![Sign-in-options](./images/troubleshooting/security-info.png)
