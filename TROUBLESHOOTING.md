@@ -9,14 +9,14 @@
 If you encounter this error when attempting to migrate multi-factor authentication to a new device:
 
 1. In an incognito tab visit "https://mysignins.microsoft.com/security-info"
-2. Click "Sign-in options" at the bottom of the Microsoft sign-in page (image?)
+2. Click "Sign-in options" at the bottom of the Microsoft sign-in page
 
 ![Sign-in-options](./images/troubleshooting/sign-in-options.png)
 
 3. From the options, click "Sign in to an organisation"
 4. Type "elexon.co.uk" and click "Next"
 5. In the subsequent sign-in screen, enter the email you/the user signed up with, and click "Next". Continue the sign-in process as normal
-6. Once you have signed in, navigate to "Security info" (in the settings menu?) and select "Add sign-in method"
+6. Once you have signed in, navigate to "Security info" and select "Add sign-in method"
 
 ![Sign-in-options](./images/troubleshooting/security-info.png)
 
@@ -24,5 +24,5 @@ If you encounter this error when attempting to migrate multi-factor authenticati
 
 ![Sign-in-options](./images/troubleshooting/add-a-method.png)
 
-8. Follow the wizard until you reach the QR code, and then scan that in the app
+8. Follow the instructions until you reach the QR code, and then scan that in the app
 </details>
