@@ -6,6 +6,7 @@ import ast
 from dacite import from_dict
 from azure.servicebus import ServiceBusClient, ServiceBusReceivedMessage
 from azure.identity import ClientSecretCredential, InteractiveBrowserCredential
+from azure.servicebus.exceptions import ServiceBusError
 
 from settings import Settings
 
@@ -74,8 +75,11 @@ def run():
                 receiver.complete_message(msg)
                 logging.debug(f'Successfully processed message.')
             except Exception as e:
-                receiver.abandon_message(msg)
                 logging.error(f'Unable to process message. Reason: {e}')
+                try:
+                    receiver.abandon_message(msg)
+                except ServiceBusError as err:
+                    logging.error(f"Exception occurred in 'receiver.abandon_message'. Error: {err}", exc_info=True)
 
 
 if __name__ == '__main__':
