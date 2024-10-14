@@ -73,13 +73,13 @@ def run():
             try:
                 save_message(msg, download_directory)
                 receiver.complete_message(msg)
-                logging.debug(f'Successfully processed message.')
-            except Exception as e:
-                logging.error(f'Unable to process message. Reason: {e}')
+                logging.debug('Successfully processed message.')
+            except:
+                logging.exception('Unable to process message')
                 try:
                     receiver.abandon_message(msg)
-                except ServiceBusError as err:
-                    logging.error(f"Exception occurred in 'receiver.abandon_message'. Error: {err}", exc_info=True)
+                except ServiceBusError:
+                    logging.exception("Exception occurred")
 
 
 if __name__ == '__main__':
