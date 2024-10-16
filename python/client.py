@@ -50,7 +50,7 @@ def save_message(msg: ServiceBusReceivedMessage, download_directory):
         os.mkdir(output_folder_path)
 
     with open(output_file_path, 'w+') as f:
-        logging.info(f"Downloading data to {output_file_path}")
+        logging.info(f'Downloading data to {output_file_path}')
         json.dump(raw_json, f)
 
 
@@ -65,21 +65,23 @@ def run():
     if not os.path.exists(download_directory):
         os.mkdir(download_directory)
 
-    receiver = client.get_queue_receiver(settings.QueueName)
-    logging.info('Connection created with processor')
+    with client.get_queue_receiver(settings.QueueName) as receiver:
+        logging.info('Connection created with processor')
 
-    with receiver:
+        def process_message(message):
+            save_message(message, download_directory)
+            receiver.complete_message(message)
+            logging.debug('Successfully processed message.')
+
         for msg in receiver:
             try:
-                save_message(msg, download_directory)
-                receiver.complete_message(msg)
-                logging.debug(f'Successfully processed message.')
-            except Exception as e:
-                logging.error(f'Unable to process message. Reason: {e}')
+                process_message(msg)
+            except:
+                logging.exception('Unable to process message')
                 try:
                     receiver.abandon_message(msg)
-                except ServiceBusError as err:
-                    logging.error(f"Exception occurred in 'receiver.abandon_message'. Error: {err}", exc_info=True)
+                except ServiceBusError:
+                    logging.exception('Exception occurred')
 
 
 if __name__ == '__main__':
