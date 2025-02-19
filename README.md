@@ -145,6 +145,8 @@ We suggest looking at the example clients to get an understanding of how a clien
   - **error message processor** to gracefully handle any errors
   - **date format helper** to abstract away date string formatting logic (optional)
 
+The minimum supported TLS version is 1.2.
+
 ## Feedback
 We're continuously making more data available through IRIS and further reducing latency. Help us improve the service by sharing your feedback to insightssupport@elexon.co.uk.
 
