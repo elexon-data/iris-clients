@@ -1,5 +1,27 @@
 ![Insights Solution logo](./images/insights-solution.png)
 
+
+# IRIS Release August 2025
+
+> [!WARNING]
+> IRIS updates have been released that mean all users must re-register. Make sure to [re-register on the Insights Solution](https://bmrs.elexon.co.uk/iris) before 2 October 2025 to get your new credentials. Old queues will continue to work until 2 October 2025 after which they will be deleted.
+>
+> As part of this the tenant ID and some other queue configuration has been updated; you will need to update your clients accordingly. (The example clients in this repository have been updated.)
+> 
+> You will need to update:
+> - Tenant ID: `4203b7a0-7773-4de5-b830-8b263a20426e`
+> - Service Bus Namespace: `"elexon-insights-iris"`
+> - Client ID, Client Secret and Queue Name: these are available upon re-registering on the [Insights Solution](https://bmrs.elexon.co.uk/iris)
+>
+> For further support please use the [customer support portal](https://support.elexon.co.uk/csm).
+
+> [!TIP]
+> Upon re-registering you will get access to the following new features:
+> 1. Multiple Queues per User: Easily provision additional IRIS queues to your existing subscriptions.
+> 2. Server-Side Message Filters: Take control what datasets you wish to receive with self-serve filtering based on pre-defined options.
+> 3. Sender Permissions: You can send messages to your own queue so you can retry dead-lettered messages. 
+> 4. Refreshed UI: A redesigned front end with enhanced functionality e.g. managing queues, applying filters by logging in.
+
 # IRIS clients
 
 The Insights Real-time Information Service (IRIS)  is a near real-time, free, publicly available push service for accessing [Insights Solution](https://bmrs.elexon.co.uk/iris) data.
@@ -8,21 +30,29 @@ IRIS is based on the [Advanced Message Queuing Protocol (AMQP)](https://en.wikip
 
 This repo contains a collection of example clients along with notes on how to write you own client.
 
-
 Currently we have clients written in **Python**, **Node.js** and **C#/.NET**.
 
+## Before you begin / creating your queue
 
+Go to the [Insights Solution](https://bmrs.elexon.co.uk/iris) and sign up for an account. You will have one queue created for you by default but you may add up to 10.
 
-## Before you begin
+> [!WARNING]
+> Due to Microsoft platform behaviour, if you are signing up using an email address and get a "resourceNotFound" error page, you will need to go back
+> to the [Insights Solution](https://bmrs.elexon.co.uk/iris) and sign in using those same details. It should then work correctly.
 
-All clients will require you to enter your client credentials:
-- queue name
+Configure any desired filters on your queue. For convenience some dataset categories have been pre-configured but you can also customise your dataset selection.
+
+Create a client secret. Note this is shared across all queues on a single account.
+
+> [!WARNING]
+> **Client secrets expire after 2 years** - you need to return to the [Insights Solution](https://bmrs.elexon.co.uk/iris) to generate new secrets.
+
+All clients will require you to provide your client credentials and queue configuration, all of which is available on that same page.
 - client ID
-- client secret
+- client secret (this is shared across all queues on a single account)
+- queue name
+- service bus namespace
 
-You can request credentials on the [Insights Solution](https://bmrs.elexon.co.uk/iris).
-
-⚠️**Client secrets expire after 2 years** - you need to return to the [Insights Solution](https://bmrs.elexon.co.uk/iris) to generate new secrets.
 
 ## Quick-start instructions
 
@@ -47,7 +77,7 @@ pip install -r requirements.txt
 {
   "ClientId": "",
   "QueueName": "",
-  "ServiceBusNamespace": "elexon-iris",
+  "ServiceBusNamespace": "elexon-insights-iris",
   "Secret": "",
   "RelativeFileDownloadDirectory": "./data"
 }
@@ -70,7 +100,7 @@ This may be useful during initial setup and testing but is not recommended for p
 ```
 CLIENT_ID=
 QUEUE_NAME=
-SERVICE_BUS_NAMESPACE=elexon-iris
+SERVICE_BUS_NAMESPACE=elexon-insights-iris
 SECRET=
 RELATIVE_FILE_DOWNLOAD_DIRECTORY=./data
 ```
@@ -93,7 +123,7 @@ This may be useful during initial setup and testing but is not recommended for p
 {
   "ClientId": "",
   "QueueName": "",
-  "ServiceBusNamespace": "elexon-iris",
+  "ServiceBusNamespace": "elexon-insights-iris",
   "Secret": "",
   "RelativeFileDownloadDirectory": "./data"
 }
@@ -118,7 +148,7 @@ Messages are stored in robust server-side queues, so it's not a problem if your 
 **You don't need to write the messages to disk**. All of our example clients do, but you might consider directly integrating your messages into existing messaging services or processing them immediately in memory instead.
 
 ### One connection per queue
-It is only possible to have **one connection per queue**. If you need multiple connections you can either share the message content from your client or consider setting up a separate IRIS queue.
+It is only possible to have **one connection per queue**. If you need multiple connections you can either share the message content from your client or create another IRIS queue.
 
 ### Message subject
 The message subject of each message is the dataset name (e.g. `BOALF`).
@@ -134,7 +164,7 @@ This interchangeability allows you to decide which data source works best for yo
 
 [Azure provides SDKs for building clients](https://learn.microsoft.com/en-us/azure/service-bus-messaging/). These are not strictly required, but they are definitely the easiest way to handle the authentication layer around AMQP.
 
-Alongside your client credentials you will also need a `TenantId` to connect your own client to IRIS. This value is `1a235385-5d29-40e1-96fd-bc5ec2706361`.
+Alongside your client credentials you will also need a `TenantId` to connect your own client to IRIS. This value is `4203b7a0-7773-4de5-b830-8b263a20426e`.
 
 We suggest looking at the example clients to get an understanding of how a client should work. Roughly each client is made up of:
   - **main client file** to pull together all the business logic

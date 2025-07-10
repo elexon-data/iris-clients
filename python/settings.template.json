@@ -1,7 +1,7 @@
 {
   "ClientId": "",
   "QueueName": "",
-  "ServiceBusNamespace": "elexon-iris",
+  "ServiceBusNamespace": "elexon-insights-iris",
   "Secret": "",
   "RelativeFileDownloadDirectory": "./data"
 }
