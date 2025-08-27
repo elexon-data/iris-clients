@@ -2,7 +2,7 @@ namespace IrisClient;
 
 public sealed class Settings
 {
-    public string TenantId = "1a235385-5d29-40e1-96fd-bc5ec2706361"; // Elexon Tenant Id
+    public string TenantId = "4203b7a0-7773-4de5-b830-8b263a20426e"; // Elexon Products and Services Tenant Id
     public string? ServiceBusNamespace { get; set; }
     public string? ClientId { get; set; }
     public string? Secret { get; set; }

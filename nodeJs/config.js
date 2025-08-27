@@ -1,7 +1,7 @@
 const serviceBusNamespace = process.env.SERVICE_BUS_NAMESPACE;
 const queueName = process.env.QUEUE_NAME;
 const downloadDirectory = process.env.RELATIVE_FILE_DOWNLOAD_DIRECTORY
-const tenantId = "1a235385-5d29-40e1-96fd-bc5ec2706361"; // Elexon Tenant Id
+const tenantId = "4203b7a0-7773-4de5-b830-8b263a20426e"; // Elexon Products and Services Tenant Id
 
 if (!serviceBusNamespace) {
     throw new Error("Invalid configuration value: SERVICE_BUS_NAMESPACE is required");

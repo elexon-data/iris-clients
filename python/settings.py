@@ -4,7 +4,7 @@ import sys
 
 @dataclass
 class Settings:
-    TenantId = "1a235385-5d29-40e1-96fd-bc5ec2706361"
+    TenantId = "4203b7a0-7773-4de5-b830-8b263a20426e"
     ServiceBusNamespace: str
     FullyQualifiedNamespace: str = field(init=False)
     QueueName: str
