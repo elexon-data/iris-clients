@@ -136,6 +136,27 @@ This may be useful during initial setup and testing but is not recommended for p
 
 </details>
 
+<details>
+    <summary ><h3>Java</h3></summary>
+
+1. Ensure you have installed the [JDK](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) (version 11 or above)
+2. Run `cd java` to navigate to the `java` directory
+3. Run `mvn clean package` to install the dependencies
+4. Copy the `src/main/resources/settings_template.properties` file and rename it to `settings.properties`
+5. Enter your client credentials into the `settings.properties` file
+
+```properties
+TENANT_ID=1a235385-5d29-40e1-96fd-bc5ec2706361
+CLIENT_ID=
+SECRET=
+QUEUE_NAME=
+FULLY_QUALIFIED_NAMESPACE=elexon-iris.servicebus.windows.net
+DOWNLOAD_FILE_PATH_DIR=./data
+```
+6. Run `mvn clean install` to build the project
+7. Run `mvn exec:java -Dexec.mainClass="Main"`
+</details>
+
 ## Important notes
 
 ### Time-to-live (TTL) = 3 days
