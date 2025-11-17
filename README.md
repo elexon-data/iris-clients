@@ -56,7 +56,7 @@ All clients will require you to provide your client credentials and queue config
 
 ## Quick-start instructions
 
-To get started with an example client, clone this repo then follow the steps below
+To get started with an example client, clone this repo then follow the steps below.
 
 <details>
     <summary><h3>Python</h3></summary>
@@ -84,8 +84,13 @@ pip install -r requirements.txt
 ```
 6. Run `python client.py`
 
-N.B. If you leave `ClientId` and `Secret` blank when running the client, it will open a browser window with a login page.
-This may be useful during initial setup and testing but is not recommended for production use. 
+#### Debugging
+
+If you get CMake errors building wheels in non-Windows versions (e.g. while installing `uamqp`), try running:
+
+```bash
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+```
 
 </details>
 
@@ -105,9 +110,6 @@ SECRET=
 RELATIVE_FILE_DOWNLOAD_DIRECTORY=./data
 ```
 6. Run `npm run client`
-
-N.B. If you leave `CLIENT_ID` and `SECRET` blank when running the client, it will open a browser window with a login page.
-This may be useful during initial setup and testing but is not recommended for production use.
 
 </details>
 
@@ -131,10 +133,10 @@ This may be useful during initial setup and testing but is not recommended for p
 5. Run `dotnet build` to build the project
 6. Run `dotnet run`
 
+</details>
+
 N.B. If you leave `ClientId` and `Secret` blank when running the client, it will open a browser window with a login page.
 This may be useful during initial setup and testing but is not recommended for production use.
-
-</details>
 
 ## Important notes
 

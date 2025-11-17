@@ -86,4 +86,6 @@ def run():
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
+    logging.getLogger('azure').setLevel(logging.WARNING) # disable Azure INFO logging (verbose)
+
     run()

@@ -16,7 +16,6 @@ const createFile = (dataset, fileName, content) => {
       });
     }
 
-    console.log(`Creating file "${fileName}"`);
     writeFile(filePath, content, () => {
       console.log(`Created file "${fileName}"`);
     });
@@ -24,8 +23,6 @@ const createFile = (dataset, fileName, content) => {
 };
 
 const processMessage = async (messageReceived) => {
-  console.log("Processing message");
-
   const now = new Date();
   const dataset = messageReceived.subject ?? "unknown";
   const fileName = messageReceived.messageId ?? `${dataset}_${formatDateForFileName(now)}.json`;

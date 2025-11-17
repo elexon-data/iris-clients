@@ -4,9 +4,9 @@
   "author": "Softwire",
   "private": true,
   "dependencies": {
-    "@azure/identity": "^2.0.5",
-    "@azure/service-bus": "^7.9.0",
-    "dotenv": "^16.0.1"
+    "@azure/identity": "^4.13.0",
+    "@azure/service-bus": "^7.9.5",
+    "dotenv": "^17.2.3"
   },
   "type": "module",
   "scripts": {
