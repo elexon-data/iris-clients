@@ -61,7 +61,7 @@ To get started with an example client, clone this repo then follow the steps bel
 <details>
     <summary><h3>Python</h3></summary>
 
-1. Ensure you have installed [Python](https://www.python.org/downloads/) (version 3.9 or above)
+1. Ensure you have installed [Python](https://www.python.org/downloads/) (version 3.11 or above is recommended)
 2. Run `cd python` to navigate to the `python` directory
 3. Run the following to activate a virtual environment and install the dependencies
 
@@ -97,7 +97,7 @@ export CMAKE_POLICY_VERSION_MINIMUM=3.5
 <details>
     <summary><h3>Node.js</h3></summary>
 
-1. Ensure you have installed [Node.js](https://nodejs.org/en/) (version 16.0.0 or above)
+1. Ensure you have installed [Node.js](https://nodejs.org/en/) (version 20.0.0 or above is recommended)
 2. Run `cd nodeJs` to navigate to the `nodeJs` directory
 3. Run `npm i` to install the dependencies
 4. Copy the `.env.template` file and rename it to `.env`
