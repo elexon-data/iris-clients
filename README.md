@@ -116,7 +116,7 @@ RELATIVE_FILE_DOWNLOAD_DIRECTORY=./data
 <details>
     <summary ><h3>C#/.NET</h3></summary>
 
-1. Ensure you have installed the [.NET SDK](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks?cid=getdotnetsdk) (version 6 or above)
+1. Ensure you have installed the [.NET SDK](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks?cid=getdotnetsdk) (version 10 or above)
 2. Run `cd dotnet/IrisClient` to navigate to the `dotnet/IrisClient` directory
 3. Copy the `appsettings.template.json` file and rename it to `appsettings.json`
 4. Enter your client credentials into the `appsettings.json` file
