@@ -1,6 +1,3 @@
-![Insights Solution logo](./images/insights-solution.png)
-
-
 # IRIS Release August 2025
 
 > [!WARNING]
