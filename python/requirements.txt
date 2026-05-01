@@ -5,7 +5,7 @@ azure-servicebus==7.14.3
 certifi==2025.10.5
 cffi==2.0.0
 charset-normalizer==3.4.4
-cryptography==46.0.5
+cryptography==46.0.7
 dacite==1.9.2
 idna==3.11
 isodate==0.7.2
@@ -17,7 +17,7 @@ portalocker==3.2.0
 pycparser==2.23
 PyJWT==2.12.0
 pywin32==311; platform_system == "Windows"
-requests==2.32.5
+requests==2.33.1
 requests-oauthlib==2.0.0
 six==1.17.0
 types-cryptography==3.3.23.2
