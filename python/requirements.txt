@@ -22,5 +22,4 @@ requests-oauthlib==2.0.0
 six==1.17.0
 types-cryptography==3.3.23.2
 typing-extensions==4.15.0
-uamqp==1.6.11
 urllib3==2.8.0
